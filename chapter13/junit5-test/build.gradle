@@ -1,9 +1,9 @@
 dependencies {
-    compile project(':chapter13:base-test')
-    testCompile testing.junit5Engine, testing.mockito, spring.test
-    
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "5.2.0"
-    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.2.0"
+    implementation project(':chapter13:base-test')
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junit5Version", "org.mockito:mockito-all:$mockitoVersion", spring.test
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "5.2.0"
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.2.0"
 }
 test {
 	useJUnitPlatform()
@@ -13,6 +13,6 @@ jar {
     manifest {
         attributes("Created-By"      : "Iuliana Cosmina",
                 "Specification-Title": "Pro Spring 5",
-                "Class-Path"         : configurations.compile.collect { it.getName() }.join(' '))
+                "Class-Path"         : configurations.runtimeClasspath.collect { it.getName() }.join(' '))
     }
 }

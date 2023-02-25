@@ -18,7 +18,7 @@ configurations {
 }
 
 dependencies {
-    compile hibernate.querydslapt, hibernate.jpaModelGen
+    implementation hibernate.querydslapt, hibernate.jpaModelGen
     annotationProcessor(hibernate.jpaModelGen)
 }
 
@@ -53,6 +53,6 @@ jar {
                 "Created-By"      : "Iuliana Cosmina",
                 "Specification-Title": "Pro Spring 5",
                 'Main-Class': 'com.apress.prospring5.ch8.SpringJPADemo',
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+                "Class-Path": configurations.runtimeClasspath.collect { it.getName() }.join(' '))
     }
 }
